@@ -1,0 +1,11 @@
+opencv-python
+mediapipe==0.10.14
+pyautogui
+SpeechRecognition
+pyaudio
+pyttsx3
+numpy
+customtkinter
+pycaw
+comtypes
+screen-brightness-control
