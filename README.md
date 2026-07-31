@@ -15,11 +15,11 @@ Use your computer's webcam to interact with your desktop using the following int
 
 | Action | Hand Gesture | Description |
 | :--- | :--- | :--- |
-| **Move Mouse** | ☝️ **Index Finger Up** | Keep your index finger pointing up (and middle finger down). Move your hand to move the cursor. |
-| **Left Click** | 🤏 **Pinch Thumb & Index** | Pinch your index finger and thumb together briefly to trigger a mouse click. |
-| **Scroll Page** | ✌️ **Index & Middle Up** | Raise both your index and middle fingers. Move your hand up to scroll up, and down to scroll down. |
-| **Adjust Volume** | 🤙 **Pinky Up + Pinch** | Raise your pinky finger. While it's up, pinch and stretch your thumb and index finger to change the volume. |
-| **Adjust Brightness**| 🖖 **Pinky & Ring Up + Pinch** | Raise your pinky and ring fingers. Pinch and stretch your thumb and index finger to change screen brightness. |
+| **Move Mouse** | ☝️ **Index Finger Up** | Keep your index finger pointing up (all other fingers down). Move your hand to move the cursor. |
+| **Left Click** | 🤏 **Pinch Thumb & Index** | Pinch your index finger and thumb together briefly while pointing to trigger a mouse click. |
+| **Scroll Page** | ✌️ **Peace Sign** | Raise both your index and middle fingers (others down). Move your hand up to scroll up, and down to scroll down. |
+| **Adjust Volume** | 👌 **OK Sign (Pinch)** | Keep your Middle, Ring, and Pinky fingers UP. Pinch and stretch your thumb and index finger to change the volume. |
+| **Adjust Brightness**| ✊ **Fist Pinch (Salt)** | Keep your Middle, Ring, and Pinky fingers DOWN (curled in). Pinch and stretch your thumb and index finger to change screen brightness. |
 
 ## 🎙️ Voice Commands
 

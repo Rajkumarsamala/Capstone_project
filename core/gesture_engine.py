@@ -81,8 +81,39 @@ class GestureEngine:
         for id in range(8, 21, 4):
             fingers.append(1 if lmList[id][2] < lmList[id-2][2] else 0)
             
-        # 1. Mouse Move: Index Up, Middle Down
-        if fingers[0] == 1 and fingers[1] == 0:
+        # 1. Volume Control: OK Sign (Middle, Ring, Pinky UP)
+        if fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 1 and self.volume:
+            dist = math.hypot(tx - x1, ty - y1)
+            cv2.line(img, (tx, ty), (x1, y1), (255, 0, 0), 3)
+            vol = np.interp(dist, [20, 150], [self.min_vol, self.max_vol])
+            try: self.volume.SetMasterVolumeLevel(vol, None)
+            except: pass
+            
+        # 2. Brightness Control: Fist Pinch (All fingers DOWN / curled)
+        elif fingers[0] == 0 and fingers[1] == 0 and fingers[2] == 0 and fingers[3] == 0:
+            dist = math.hypot(tx - x1, ty - y1)
+            cv2.line(img, (tx, ty), (x1, y1), (0, 255, 255), 3)
+            bright = np.interp(dist, [20, 150], [0, 100])
+            try: sbc.set_brightness(int(bright))
+            except: pass
+            
+        # 3. Scroll: Peace Sign (Index & Middle UP, Ring & Pinky DOWN)
+        elif fingers[0] == 1 and fingers[1] == 1 and fingers[2] == 0 and fingers[3] == 0:
+            cy = (y1 + y2) // 2
+            if self.scroll_start_y == 0:
+                self.scroll_start_y = cy
+            else:
+                if cy < self.scroll_start_y - 20:
+                    pyautogui.scroll(100) # Up
+                    self.scroll_start_y = cy
+                elif cy > self.scroll_start_y + 20:
+                    pyautogui.scroll(-100) # Down
+                    self.scroll_start_y = cy
+        else:
+            self.scroll_start_y = 0
+            
+        # 4. Mouse Move: Pointing (ONLY Index UP, Middle, Ring, Pinky DOWN)
+        if fingers[0] == 1 and fingers[1] == 0 and fingers[2] == 0 and fingers[3] == 0:
             frame_margin = 100
             cv2.rectangle(img, (frame_margin, frame_margin), (w - frame_margin, h - frame_margin), (255, 0, 255), 2)
             
@@ -104,36 +135,3 @@ class GestureEngine:
                 cv2.circle(img, (tx, ty), 15, (0, 255, 0), cv2.FILLED)
                 pyautogui.click()
                 self.click_cooldown = time.time() + 0.5
-                
-        # 2. Scroll: Index and Middle Up, Ring Down
-        elif fingers[0] == 1 and fingers[1] == 1 and fingers[2] == 0:
-            cy = (y1 + y2) // 2
-            if self.scroll_start_y == 0:
-                self.scroll_start_y = cy
-            else:
-                if cy < self.scroll_start_y - 20:
-                    pyautogui.scroll(100) # Up
-                    self.scroll_start_y = cy
-                elif cy > self.scroll_start_y + 20:
-                    pyautogui.scroll(-100) # Down
-                    self.scroll_start_y = cy
-        else:
-            self.scroll_start_y = 0
-            
-        # 3. Volume Control: Pinky Up, Index/Middle/Ring Down
-        # Pinch thumb and index to adjust volume
-        if fingers[3] == 1 and fingers[0] == 0 and fingers[1] == 0 and fingers[2] == 0 and self.volume:
-            dist = math.hypot(tx - x1, ty - y1)
-            cv2.line(img, (tx, ty), (x1, y1), (255, 0, 0), 3)
-            vol = np.interp(dist, [20, 150], [self.min_vol, self.max_vol])
-            try: self.volume.SetMasterVolumeLevel(vol, None)
-            except: pass
-            
-        # 4. Brightness Control: Pinky AND Ring Up, Index/Middle Down
-        # Pinch thumb and index to adjust brightness
-        if fingers[3] == 1 and fingers[2] == 1 and fingers[0] == 0 and fingers[1] == 0:
-            dist = math.hypot(tx - x1, ty - y1)
-            cv2.line(img, (tx, ty), (x1, y1), (0, 255, 255), 3)
-            bright = np.interp(dist, [20, 150], [0, 100])
-            try: sbc.set_brightness(int(bright))
-            except: pass
