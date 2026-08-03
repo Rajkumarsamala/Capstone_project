@@ -84,3 +84,18 @@ class VoiceEngine:
             pyautogui.write(text, interval=0.05)
         elif "enter" in command:
             pyautogui.press("enter")
+        elif "close window" in command:
+            self.speak("Closing window")
+            pyautogui.hotkey("alt", "f4")
+        elif "copy that" in command or "copy text" in command:
+            self.speak("Copied")
+            pyautogui.hotkey("ctrl", "c")
+        elif "paste that" in command or "paste text" in command:
+            self.speak("Pasted")
+            pyautogui.hotkey("ctrl", "v")
+        elif "select all" in command:
+            self.speak("Selected all")
+            pyautogui.hotkey("ctrl", "a")
+        elif "undo" in command:
+            self.speak("Undoing")
+            pyautogui.hotkey("ctrl", "z")

@@ -18,8 +18,11 @@ Use your computer's webcam to interact with your desktop using the following int
 | **Move Mouse** | ☝️ **Index Finger Up** | Keep your index finger pointing up (all other fingers down). Move your hand to move the cursor. |
 | **Left Click** | 🤏 **Pinch Thumb & Index** | Pinch your index finger and thumb together briefly while pointing to trigger a mouse click. |
 | **Scroll Page** | ✌️ **Peace Sign** | Raise both your index and middle fingers (others down). Move your hand up to scroll up, and down to scroll down. |
-| **Adjust Volume** | 👌 **OK Sign (Pinch)** | Keep your Middle, Ring, and Pinky fingers UP. Pinch and stretch your thumb and index finger to change the volume. |
+| **Adjust Volume** | 👌 **OK Sign (Pinch)** | Keep your Middle, Ring, and Pinky fingers UP (Index down). Pinch and stretch your thumb and index finger to change the volume. |
 | **Adjust Brightness**| ✊ **Fist Pinch (Salt)** | Keep your Middle, Ring, and Pinky fingers DOWN (curled in). Pinch and stretch your thumb and index finger to change screen brightness. |
+| **Show Desktop** | 🖐️ **Open Palm** | Raise all five fingers open to minimize all windows and show the desktop. |
+| **Switch App** | 🤘 **Rock Sign** | Raise only your Index and Pinky fingers to quickly switch to the previous application. |
+| **Take Screenshot**| 🖖 **Three Fingers Up**| Raise your Index, Middle, and Ring fingers (Pinky down) to take a full-screen screenshot. |
 
 ## 🎙️ Voice Commands
 
@@ -31,6 +34,11 @@ The system features an always-listening voice assistant. Simply say the wake wor
 | **"open notepad"** | Launches the Windows Notepad application. |
 | **"open calculator"** | Launches the Windows Calculator. |
 | **"open browser"** | Opens your default web browser to Google.com. |
+| **"close window"** | Closes the currently active application window. |
+| **"copy that"** | Copies the currently selected text or item. |
+| **"paste that"** | Pastes the copied text or item. |
+| **"select all"** | Selects all text or items in the active window. |
+| **"undo"** | Undoes your last action. |
 | **"type [your text]"** | Automatically types the text you dictate. *(e.g., "type hello world")* |
 | **"enter"** | Presses the 'Enter' key on your keyboard. |
 | **"sleep"** | Puts the voice assistant back to sleep so it stops listening. |

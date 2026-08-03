@@ -23,6 +23,7 @@ class GestureEngine:
         self.prev_x, self.prev_y = 0, 0
         self.smoothing = 5
         self.click_cooldown = 0
+        self.action_cooldown = 0
         self.scroll_start_y = 0
         
         # Audio setup
@@ -81,8 +82,8 @@ class GestureEngine:
         for id in range(8, 21, 4):
             fingers.append(1 if lmList[id][2] < lmList[id-2][2] else 0)
             
-        # 1. Volume Control: OK Sign (Middle, Ring, Pinky UP)
-        if fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 1 and self.volume:
+        # 1. Volume Control: OK Sign (Middle, Ring, Pinky UP, Index DOWN)
+        if fingers[0] == 0 and fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 1 and self.volume:
             dist = math.hypot(tx - x1, ty - y1)
             cv2.line(img, (tx, ty), (x1, y1), (255, 0, 0), 3)
             vol = np.interp(dist, [20, 150], [self.min_vol, self.max_vol])
@@ -111,6 +112,25 @@ class GestureEngine:
                     self.scroll_start_y = cy
         else:
             self.scroll_start_y = 0
+
+        # 5. Show Desktop: All Fingers UP (Open Palm)
+        if fingers[0] == 1 and fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 1:
+            if time.time() > self.action_cooldown:
+                pyautogui.hotkey('win', 'd')
+                self.action_cooldown = time.time() + 1.0
+
+        # 6. Switch Window: Index and Pinky UP (Rock Sign)
+        elif fingers[0] == 1 and fingers[1] == 0 and fingers[2] == 0 and fingers[3] == 1:
+            if time.time() > self.action_cooldown:
+                pyautogui.hotkey('alt', 'tab')
+                self.action_cooldown = time.time() + 1.0
+
+        # 7. Screenshot: Index, Middle, Ring UP (Three Fingers)
+        elif fingers[0] == 1 and fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 0:
+            if time.time() > self.action_cooldown:
+                pyautogui.hotkey('win', 'prtscr')
+                self.action_cooldown = time.time() + 2.0
+            
             
         # 4. Mouse Move: Pointing (ONLY Index UP, Middle, Ring, Pinky DOWN)
         if fingers[0] == 1 and fingers[1] == 0 and fingers[2] == 0 and fingers[3] == 0:

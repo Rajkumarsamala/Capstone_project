@@ -46,7 +46,7 @@ class CapstoneApp(ctk.CTk):
         self.update_log("System: Ready to start.\n")
         
         # Instructions Tab or Text
-        self.instr_label = ctk.CTkLabel(self.control_frame, text="Gestures:\n• Move: Index Finger Up\n• Click: Pinch Thumb & Index\n• Scroll: Index & Middle Up\n• Volume: Pinky Up & Pinch\n• Brightness: Pinky+Ring & Pinch", justify="left", font=("Arial", 12))
+        self.instr_label = ctk.CTkLabel(self.control_frame, text="Gestures:\n• Move: Index Finger Up\n• Click: Pinch Thumb & Index\n• Scroll: Index & Middle Up\n• Volume: OK Sign\n• Brightness: Fist Pinch\n• Show Desktop: Open Palm\n• Switch App: Rock Sign\n• Screenshot: Three Fingers Up", justify="left", font=("Arial", 12))
         self.instr_label.pack(pady=20, anchor="w", padx=10)
         
         # Engines
