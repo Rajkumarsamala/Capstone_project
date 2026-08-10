@@ -80,7 +80,7 @@ class VoiceEngine:
         elif "open calculator" in command:
             self.speak("Opening Calculator")
             os.system("calc")
-        elif "open browser" in command:
+        elif "browser" in command and "open" in command:
             self.speak("Opening Browser")
             webbrowser.open("https://www.google.com")
         elif "search for" in command:
@@ -98,6 +98,9 @@ class VoiceEngine:
         elif "open file explorer" in command or "open explorer" in command:
             self.speak("Opening File Explorer")
             os.system("explorer")
+        elif "recycle bin" in command:
+            self.speak("Opening Recycle Bin")
+            os.system("start shell:RecycleBinFolder")
         elif "open command prompt" in command or "open cmd" in command:
             self.speak("Opening Command Prompt")
             os.system("start cmd")

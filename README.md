@@ -36,6 +36,7 @@ The system features an always-listening voice assistant. Simply say the wake wor
 | **"what time is it"** | Assistant tells you the current time. |
 | **"what is the date"** | Assistant tells you today's date. |
 | **"open file explorer"** | Opens the Windows File Explorer. |
+| **"open recycle bin"** | Opens the Recycle Bin. |
 | **"open command prompt"** | Opens the Command Prompt. |
 | **"maximize/minimize window"** | Maximizes or minimizes the active window. |
 | **"show desktop"** | Minimizes all windows to show the desktop. |
