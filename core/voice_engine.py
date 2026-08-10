@@ -83,6 +83,11 @@ class VoiceEngine:
         elif "browser" in command or "google" in command:
             self.speak("Opening Browser")
             webbrowser.open("https://www.google.com")
+        elif "play" in command and "youtube" in command:
+            query = command.replace("play", "").replace("on youtube", "").replace("youtube", "").strip()
+            if query:
+                self.speak(f"Searching YouTube for {query}")
+                webbrowser.open(f"https://www.youtube.com/results?search_query={query}")
         elif "search" in command:
             query = command.replace("search for", "").replace("search", "").strip()
             if query:
