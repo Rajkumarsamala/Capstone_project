@@ -6,7 +6,6 @@ import numpy as np
 import time
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 from comtypes import CLSCTX_ALL
-import screen_brightness_control as sbc
 
 pyautogui.FAILSAFE = False
 
@@ -90,14 +89,7 @@ class GestureEngine:
             try: self.volume.SetMasterVolumeLevel(vol, None)
             except: pass
             
-        # 2. Brightness Control: Fist Pinch (All fingers DOWN / curled)
-        elif fingers[0] == 0 and fingers[1] == 0 and fingers[2] == 0 and fingers[3] == 0:
-            dist = math.hypot(tx - x1, ty - y1)
-            cv2.line(img, (tx, ty), (x1, y1), (0, 255, 255), 3)
-            bright = np.interp(dist, [20, 150], [0, 100])
-            try: sbc.set_brightness(int(bright))
-            except: pass
-            
+
         # 3. Scroll: Peace Sign (Index & Middle UP, Ring & Pinky DOWN)
         elif fingers[0] == 1 and fingers[1] == 1 and fingers[2] == 0 and fingers[3] == 0:
             cy = (y1 + y2) // 2
