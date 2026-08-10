@@ -88,6 +88,25 @@ class VoiceEngine:
             if query:
                 self.speak(f"Searching for {query}")
                 webbrowser.open(f"https://www.google.com/search?q={query}")
+        elif "calculate" in command or "what is" in command or "how much is" in command:
+            try:
+                expression = command.replace("calculate", "").replace("what is", "").replace("how much is", "")
+                expression = expression.replace("x", "*").replace("into", "*").replace("times", "*").replace("multiplied by", "*")
+                expression = expression.replace("plus", "+").replace("and", "+")
+                expression = expression.replace("minus", "-").replace("take away", "-")
+                expression = expression.replace("divided by", "/").replace("over", "/")
+                
+                allowed_chars = "0123456789+-*/.() "
+                cleaned_expr = "".join(c for c in expression if c in allowed_chars).strip()
+                
+                if cleaned_expr:
+                    result = eval(cleaned_expr)
+                    self.speak(f"The answer is {result}")
+                    self.log(f"System: Calculated {cleaned_expr} = {result}")
+                else:
+                    self.speak("I couldn't understand the math.")
+            except Exception:
+                self.speak("Sorry, I couldn't calculate that.")
         elif "time" in command:
             now = datetime.datetime.now().strftime("%I:%M %p")
             self.speak(f"The time is {now}")
