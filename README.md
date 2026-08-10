@@ -38,6 +38,7 @@ The system features an always-listening voice assistant. Simply say the wake wor
 | **"open file explorer"** | Opens the Windows File Explorer. |
 | **"open command prompt"** | Opens the Command Prompt. |
 | **"maximize/minimize window"** | Maximizes or minimizes the active window. |
+| **"show desktop"** | Minimizes all windows to show the desktop. |
 | **"volume up/down/mute"** | Controls system volume. |
 | **"close window"** | Closes the currently active application window. |
 | **"switch window"** | Switches to the previous application window. |

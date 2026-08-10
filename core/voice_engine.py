@@ -106,6 +106,9 @@ class VoiceEngine:
         elif "switch window" in command:
             self.speak("Switching window")
             pyautogui.hotkey("alt", "tab")
+        elif "show desktop" in command or "go to desktop" in command:
+            self.speak("Showing desktop")
+            pyautogui.hotkey("win", "d")
         elif "volume up" in command:
             self.speak("Increasing volume")
             for _ in range(5):
