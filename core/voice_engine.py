@@ -56,10 +56,14 @@ class VoiceEngine:
 
     def _process_command(self, command):
         if self.wake_word in command:
-            self.is_awake = True
-            self.speak("How can I help you?")
-            self.log("System: Assistant is AWAKE")
-            return
+            if not self.is_awake:
+                self.is_awake = True
+                self.speak("How can I help you?")
+                self.log("System: Assistant is AWAKE")
+            
+            command = command.replace(self.wake_word, "").strip()
+            if not command:
+                return
             
         if not self.is_awake:
             return
